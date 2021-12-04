@@ -18,8 +18,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,7 +31,8 @@ INSTALLED_APPS = [
     # 'rest_framework',    
     # custom
     'users.apps.UsersConfig',
-    'contacts.apps.ContactsConfig'
+    'contacts.apps.ContactsConfig',
+    'shops.apps.ShopsConfig'
 
 ]
 
@@ -109,9 +108,10 @@ MEDIA_ROOT = BASE_DIR/'media'
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD=""
+EMAIL_HOST = os.environ.get('EMAIL_HOST_SOUND')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER_SOUND')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD_SOUND')
+
 
 
 
@@ -124,6 +124,11 @@ CELERY_TIMEZONE = 'Europe/Amsterdam'
 
 # Celery results app
 CELERY_RESULT_BACKEND = 'django-db'
+
+# aws
+AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID_SOUND')
+AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY_SOUND')
+BUCKET_NAME = os.environ.get('BUCKET_NAME_SOUND')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

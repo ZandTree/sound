@@ -12,9 +12,7 @@ class User(AbstractUser):
     username = models.CharField(_("Username"), unique=True, max_length=120)
     email = models.EmailField(_('Email address'), unique=True, max_length=255)
     date_joined = models.DateTimeField(default=timezone.now)
-    is_admin = models.BooleanField(default=False)
-    
-    
+    is_admin = models.BooleanField(default=False)   
 
     USERNAME_FIELD = 'email'
 
