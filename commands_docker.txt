@@ -1,0 +1,2 @@
+docker build --tag krol .
+docker run --publish 8000:8000 krol
